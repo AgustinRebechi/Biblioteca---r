@@ -18,6 +18,16 @@ public abstract class Usuario {
 
     public abstract int getPrestamosDisponibles();
 
+    // getter
+
+    public String getNombre(){
+        return nombre;
+    }
+
+    public int getdni(){
+        return dni;
+    }
+
     // Sobrescribir el método equals
     @Override
     public boolean equals(Object obj) {

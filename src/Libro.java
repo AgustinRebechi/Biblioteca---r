@@ -50,4 +50,8 @@ public class Libro {
         return esUnico;
     }
 
+    public String getTitulo() {
+        return titulo;
+    }
+
 }

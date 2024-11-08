@@ -22,12 +22,40 @@ public class Prestamo {
         this.fueDevuelto = false;
     }
 
+    // metodos
+
     public void devolverPrestamo(){
         this.fueDevuelto = true;
         this.fechaDevolucion = LocalDate.now();
     }
 
+    // Getter
+
     public Libro getLibro(){
         return libro;
+    }
+
+    public Libro getTitulo(){
+        return libro;
+    }
+
+    public boolean getFueDevuelto(){
+        return fueDevuelto;
+    }
+
+    public Usuario getUsuario(){
+        return usuario;
+    }
+
+
+
+    @Override
+    public String toString(){
+        return "Préstamo ID: " + id +
+                ", Fecha de Solicitud: " + fechaSolicitud +
+                ", Fecha de Devolución: " + (fueDevuelto ? fechaDevolucion : "No devuelto") +
+                ", Usuario: " + usuario.getNombre() +
+                ", Libro: " + libro.getTitulo();
+
     }
 }

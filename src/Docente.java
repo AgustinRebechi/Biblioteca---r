@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public class Docente extends Usuario {
-    
+
     private LocalDate fechaIngreso;
     private int aniosAntiguedad;
     private int prestamosDisponibles;
@@ -13,7 +13,7 @@ public class Docente extends Usuario {
         super(nombre, dni);
         this.fechaIngreso = fechaIngreso;
         this.aniosAntiguedad = calcularAnios(fechaIngreso);
-        this.prestamosDiponibles = aniosAntiguedad;
+        this.prestamosDisponibles = aniosAntiguedad;
     }
 
     // metodos

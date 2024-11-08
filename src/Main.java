@@ -1,15 +1,37 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    
+        Biblioteca biblioteca = new Biblioteca("Biblioteca Central");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Docente ana = biblioteca.registrarDocente("Ana López",35234111, LocalDate.of(2010, 1, 1));
+        Docente carlos = biblioteca.registrarDocente("Carlos Pérez", 40234111, LocalDate.of(2015, 1, 1));
+
+        Estudiante laura = biblioteca.registrarEstudiante("Laura Gómez", 45234111);
+        Estudiante juan = biblioteca.registrarEstudiante("Juan Rodríguez", 50234111);
+ 
+        Libro cien_anios = biblioteca.registrarLibro("Cien años de soledad", "Gabriel García Márquez");
+        Libro sapiens = biblioteca.registrarLibro("Sapiens: De animales a dioses", "Yuval Noah Harari");
+        Libro nombre_de_la_rosa = biblioteca.registrarLibro("El nombre de la rosa", "Umberto Eco");
+        Libro breves_respuestas = biblioteca.registrarLibro("Breves respuestas a las grandes preguntas", "Stephen Hawking");
+
+        Prestamo prestamo1 = biblioteca.registrarPrestamo(ana, cien_anios);
+        Prestamo prestamo2 = biblioteca.registrarPrestamo(carlos, sapiens);
+        Prestamo prestamo3 = biblioteca.registrarPrestamo(laura, nombre_de_la_rosa);
+        Prestamo prestamo4 = biblioteca.registrarPrestamo(ana, breves_respuestas);
+
+        biblioteca.devolverPrestamo(prestamo1);  // Ana devuelve el libro "Cien años de soledad"
+        biblioteca.devolverPrestamo(prestamo2);  // Carlos devuelve "Sapiens: De animales a dioses"
+
+        System.out.println("Préstamos registrados de la Biblioteca Central:");
+        biblioteca.mostrarPrestamos();
+
+        System.out.println("\nPréstamos activos (no devueltos):");
+        biblioteca.mostrarPrestamosActivos();
+
+        System.out.println("\nUsuarios con prestamos activos:");
+        biblioteca.mostrarUsuariosConPrestamos();
+
     }
 }

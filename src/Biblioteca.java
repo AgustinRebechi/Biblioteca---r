@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Biblioteca {
 
@@ -88,7 +90,41 @@ public class Biblioteca {
         prestamo.getLibro().estaDisponible(); //a
     }
 
-    
+    public void mostrarPrestamos(){
+        for (Prestamo prestamo : prestamos){
+            System.out.println(prestamo);
+        }
+    }
 
+    public void mostrarPrestamosActivos(){
+        boolean HayPrestamosActivos = false;
+        for (Prestamo prestamo : prestamos){
+            if(!prestamo.getFueDevuelto()){
+                System.out.println(prestamo);
+                HayPrestamosActivos = true;
+
+            }
+        }
+
+    }
+
+    public void mostrarUsuariosConPrestamos() {
+        Set<Usuario> usuariosConPrestamos = new HashSet<>();
+
+        for (Prestamo prestamo : prestamos) {
+            if (!prestamo.getFueDevuelto()) {
+                usuariosConPrestamos.add(prestamo.getUsuario()); // Asegúrate de que getUsuario() retorne el usuario del préstamo
+            }
+        }
+
+        if (usuariosConPrestamos.isEmpty()) {
+            System.out.println("No hay usuarios con préstamos activos.");
+        } else {
+            System.out.println("Usuarios con préstamos activos:");
+            for (Usuario usuario : usuariosConPrestamos) {
+                System.out.println("Usuario: " + usuario.getNombre() + " (DNI: " + usuario.getDni() + ")");
+            }
+        }
+    }
 
 }
